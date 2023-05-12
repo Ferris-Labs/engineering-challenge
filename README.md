@@ -7,7 +7,7 @@
 The ferrisDX platform consists of the following technical FOSS components engineered to work as an
 **event-based micro-services integration platform** on top of any Kubernetes or dedicated compute
 infrastructure. It is designed to be **cloud native** and abstracted away from hyperscaler propietary
-services.
+services. It uses the following components under the hood:
 
 * ArgoCD
 * Consul
@@ -37,7 +37,7 @@ does not confilct with the existing ones.
 * S3 (for any file abstraction)
 * JDBC / SQLAlchemy for any DB abstraction
 
-## Challenge Objective
+## Engineering Challenge Objective
 
 We want to introduce a more genralistic and universal approach to *Metadata Handling*. At the moment all
 metadata is stored in __PostGres__ or in specific text-files (.YAML or .JSON) in order to be useful for both
