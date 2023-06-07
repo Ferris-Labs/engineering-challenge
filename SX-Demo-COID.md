@@ -16,7 +16,7 @@ The event cascade should mimick a distributed shares purchasing process with the
 
 ```mermaid
 graph TB
-    A["Request for Quotation<br/>ISIN: CH0010570759<br/>Company: [Lindt & Spruengli](https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/shares/share-explorer/share-details.CH0010570759CHF4.html#/)<br/>Volume: 100 shares<br/>Order Type: Market"] --> D["Interactive Brokers<br/>Quotation Result<br/>Price: 113'900 CHF"]
+    A["Request for Quotation<br/>ISIN: CH0010570759<br/>Company: [Lindt & Spruengli](https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/shares/share-explorer/share-details.CH0010570759CHF4.html#/)"] --> D["Interactive Brokers<br/>Quotation Result<br/>Price: 113'900 CHF"]
     A --> E["Swissquotes<br/>Quotation Result<br/>Price: 111'800 CHF"]
     E --> G["Issue Order<br/>Volume: 100 shares<br/>ISIN: CH0010570759<br/>Quote Price: 111'800 CHF"]
     G --> H["Partial Fill<br/>ISIN: CH0010570759<br/>Volume: 35 shares<br/>Price: 111'800 CHF"]
@@ -31,6 +31,5 @@ graph TB
     N --> Q["Order Completed"]
     O --> Q
     P --> Q
-    
 ```
 
