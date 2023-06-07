@@ -8,30 +8,27 @@ The event cascade should mimick a distributed shares purchasing process with the
     a. Issue an order for 150 shares of Lindt and Spruengli
     b. Receive a set of three partial fills for the order
         i. one with 35 shares at the original price
-        ii. a second one with 45 shares at a 2% higher price
-        iii. a third with 20 shares at yet a 2% higher price
+        ii. a second one with 45 shares at a slightly higher price
+        iii. a third with 20 shares at yet a slightly higher price
 4. Receive a payment confirmation for each of the three partial fills
 5. Receive a settlement confirmation for the shares for each of the three partial fills
 
 
 ```mermaid
 graph TB
-A[Request for Quotation<br/>ISIN: XYZ123<br/>Company: Lindt and Spruengli<br/>Volume: 100 shares<br/>Order Type: Market] --> B{Swissquotes}
-A --> C{Interactive Brokers}
-B --> D[Quotation Result<br/>Price: +10%]
-C --> E[Quotation Result<br/>Price: Approximation]
-D --> F[Amend Information<br/>Price: +10%<br/>ISIN: XYZ123]
-E --> F[Amend Information<br/>Price: Approximation<br/>ISIN: XYZ123]
-F --> G[Issue Order<br/>Volume: 150 shares<br/>ISIN: XYZ123]
-G --> H[Partial Fill<br/>35 shares at original price<br/>ISIN: XYZ123]
-G --> I[Partial Fill<br/>45 shares at 2% higher price<br/>ISIN: XYZ123]
-G --> J[Partial Fill<br/>20 shares at 2% higher price<br/>ISIN: XYZ123]
-H --> K[Payment Confirmation<br/>ISIN: XYZ123]
-I --> L[Payment Confirmation<br/>ISIN: XYZ123]
-J --> M[Payment Confirmation<br/>ISIN: XYZ123]
-H --> N[Settlement Confirmation<br/>ISIN: XYZ123]
-I --> O[Settlement Confirmation<br/>ISIN: XYZ123]
-J --> P[Settlement Confirmation<br/>ISIN: XYZ123]
+A[Request for Quotation<br/>ISIN: CH0010570759<br/>Company: <a href="https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/shares/share-explorer/share-details.CH0010570759CHF4.html#/">Lindt & Spruengli</a><br/>Volume: 100 shares<br/>Order Type: Market]
+A --> D[Interactive Brokers<br/>Quotation Result<br/>Price: 113'900 CHF]
+A --> E[Swissquotes<br/>Quotation Result<br/>Price: 111'800 CHF]
+E --> G[Issue Order<br/>Volume: 100 shares<br/>ISIN: CH0010570759<br/>Quote Price: 111'800 CHF]
+G --> H[Partial Fill<br/>ISIN: CH0010570759<br/>Volume: 35 shares<br/>Price: 111'800 CHF]
+G --> I[Partial Fill<br/>ISIN: CH0010570759<br/>Volume: 45 shares<br/>Price: 112'100 CHF]
+G --> J[Partial Fill<br/>ISIN: CH0010570759<br/>Volume: 20 shares<br/>Price: 112'340 CHF]
+H --> K[Payment Confirmation<br/>ISIN: CH0010570759<br/>Amount: 3'913'000 CHF]
+I --> L[Payment Confirmation<br/>ISIN: CH0010570759<br/>Amount: 5'044'500 CHF]
+J --> M[Payment Confirmation<br/>ISIN: CH0010570759<br/>Amount: 2'246'800 CHF]
+K --> N[Settlement Confirmation<br/>ISIN: CH0010570759<br/>Volume: 35 shares]
+L --> O[Settlement Confirmation<br/>ISIN: CH0010570759<br/>Volume: 45 shares]
+M --> P[Settlement Confirmation<br/>ISIN: CH0010570759<br/>Volume: 20 shares]
 N --> Q[Order Completed]
 O --> Q
 P --> Q
