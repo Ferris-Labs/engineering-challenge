@@ -16,20 +16,21 @@ The event cascade should mimick a distributed shares purchasing process with the
 
 ```mermaid
 graph TB
-A[Request for Quotation<br/>ISIN: CH0010570759<br/>Company: <a href="https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/shares/share-explorer/share-details.CH0010570759CHF4.html#/">Lindt & Spruengli</a><br/>Volume: 100 shares<br/>Order Type: Market] --> D[Interactive Brokers<br/>Quotation Result<br/>Price: 113'900 CHF]
-A --> E[Swissquotes<br/>Quotation Result<br/>Price: 111'800 CHF]
-E --> G[Issue Order<br/>Volume: 100 shares<br/>ISIN: CH0010570759<br/>Quote Price: 111'800 CHF]
-G --> H[Partial Fill<br/>ISIN: CH0010570759<br/>Volume: 35 shares<br/>Price: 111'800 CHF]
-G --> I[Partial Fill<br/>ISIN: CH0010570759<br/>Volume: 45 shares<br/>Price: 112'100 CHF]
-G --> J[Partial Fill<br/>ISIN: CH0010570759<br/>Volume: 20 shares<br/>Price: 112'340 CHF]
-H --> K[Payment Confirmation<br/>ISIN: CH0010570759<br/>Amount: 3'913'000 CHF]
-I --> L[Payment Confirmation<br/>ISIN: CH0010570759<br/>Amount: 5'044'500 CHF]
-J --> M[Payment Confirmation<br/>ISIN: CH0010570759<br/>Amount: 2'246'800 CHF]
-K --> N[Settlement Confirmation<br/>ISIN: CH0010570759<br/>Volume: 35 shares]
-L --> O[Settlement Confirmation<br/>ISIN: CH0010570759<br/>Volume: 45 shares]
-M --> P[Settlement Confirmation<br/>ISIN: CH0010570759<br/>Volume: 20 shares]
-N --> Q[Order Completed]
-O --> Q
-P --> Q
+    A["Request for Quotation<br/>ISIN: CH0010570759<br/>Company: [Lindt & Spruengli](https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/shares/share-explorer/share-details.CH0010570759CHF4.html#/)<br/>Volume: 100 shares<br/>Order Type: Market"] --> D["Interactive Brokers<br/>Quotation Result<br/>Price: 113'900 CHF"]
+    A --> E["Swissquotes<br/>Quotation Result<br/>Price: 111'800 CHF"]
+    E --> G["Issue Order<br/>Volume: 100 shares<br/>ISIN: CH0010570759<br/>Quote Price: 111'800 CHF"]
+    G --> H["Partial Fill<br/>ISIN: CH0010570759<br/>Volume: 35 shares<br/>Price: 111'800 CHF"]
+    G --> I["Partial Fill<br/>ISIN: CH0010570759<br/>Volume: 45 shares<br/>Price: 112'100 CHF"]
+    G --> J["Partial Fill<br/>ISIN: CH0010570759<br/>Volume: 20 shares<br/>Price: 112'340 CHF"]
+    H --> K["Payment Confirmation<br/>ISIN: CH0010570759<br/>Amount: 3'913'000 CHF"]
+    I --> L["Payment Confirmation<br/>ISIN: CH0010570759<br/>Amount: 5'044'500 CHF"]
+    J --> M["Payment Confirmation<br/>ISIN: CH0010570759<br/>Amount: 2'246'800 CHF"]
+    K --> N["Settlement Confirmation<br/>ISIN: CH0010570759<br/>Volume: 35 shares"]
+    L --> O["Settlement Confirmation<br/>ISIN: CH0010570759<br/>Volume: 45 shares"]
+    M --> P["Settlement Confirmation<br/>ISIN: CH0010570759<br/>Volume: 20 shares"]
+    N --> Q["Order Completed"]
+    O --> Q
+    P --> Q
+    
 ```
 
