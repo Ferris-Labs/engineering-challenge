@@ -1,8 +1,8 @@
 ## Mermaid Diagram of distributed Shares Purchasing
 
-The event cascade should mimick a distributed shares purchasing process with the following steps:
+The event cascade should mimick a distributed shares purchasing process for 100 shares of [Lindt & Spruengli](https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/shares/share-explorer/share-details.CH0010570759CHF4.html#/) with the following steps:
 
-1. Issue a request for quotation to two stock broker systems - Swissquotes and Interactive Brokers - for the market order purchasing of 100 shares of Lindt and Spruengli shares. In the root event box list the ISIN, the name of the company, the volume and the type of order (market or limit order)
+1. Issue a request for quotation to two stock broker systems - Swissquotes and Interactive Brokers - for the market order purchasing of 100 shares of Lindt & Sprüngli shares. In the root event box list the ISIN, the name of the company, the volume and the type of order (market or limit order)
 2. From Swissquotes receive a 10% higher price in the quotation result and from Interactive Brokers the currently valid price approximation (does not need to be accurate). Amend the information in the relevant box with the prices. 
 3. Continue only the Interactive Broker stream further in the mermaid diagram as follows:
     a. Issue an order for 150 shares of Lindt and Spruengli
@@ -16,7 +16,7 @@ The event cascade should mimick a distributed shares purchasing process with the
 
 ```mermaid
 graph TB
-    A["Request for Quotation<br/>ISIN: CH0010570759<br/>Company: [Lindt & Spruengli](https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/shares/share-explorer/share-details.CH0010570759CHF4.html#/)"] --> D["Interactive Brokers<br/>Quotation Result<br/>Price: 113'900 CHF"]
+    A["Request for Quotation<br/>ISIN: CH0010570759<br/>Company: *Lindt & Spruengli*"] --> D["Interactive Brokers<br/>Quotation Result<br/>Price: 113'900 CHF"]
     A --> E["Swissquotes<br/>Quotation Result<br/>Price: 111'800 CHF"]
     E --> G["Issue Order<br/>Volume: 100 shares<br/>ISIN: CH0010570759<br/>Quote Price: 111'800 CHF"]
     G --> H["Partial Fill<br/>ISIN: CH0010570759<br/>Volume: 35 shares<br/>Price: 111'800 CHF"]
